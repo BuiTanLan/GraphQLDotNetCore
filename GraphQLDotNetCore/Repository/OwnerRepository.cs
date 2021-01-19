@@ -1,4 +1,6 @@
-﻿using GraphQLDotNetCore.Contracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GraphQLDotNetCore.Contracts;
 using GraphQLDotNetCore.Entities;
 
 namespace GraphQLDotNetCore.Repository
@@ -10,6 +12,11 @@ namespace GraphQLDotNetCore.Repository
         public OwnerRepository(ApplicationContext context)
         {
             _context = context;
+        }
+
+        public IEnumerable<Owner> GetAll()
+        {
+            return _context.Owners.ToList();
         }
     }
 }
